@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter_stack_navigator/scaffold/ShoppingBag.dart';
+import 'package:flutter_stack_navigator/scaffold/home.dart';
+import 'package:flutter_stack_navigator/scaffold/search.dart';
 
 void main() {
   runApp(App());
@@ -38,13 +41,16 @@ class _ScaffoldMainState extends State<ScaffoldMain> {
       tabBar: CupertinoTabBar(
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-            icon: Icon(Icons.home),
+            icon: Icon(CupertinoIcons.home),
+            label: "Home",
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.search),
+            icon: Icon(CupertinoIcons.search),
+            label: "Search",
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.shopping_bag),
+            icon: Icon(CupertinoIcons.bag),
+            label: "Shopping Bag",
           ),
         ],
       ),
@@ -53,9 +59,7 @@ class _ScaffoldMainState extends State<ScaffoldMain> {
           case 0:
             return CupertinoTabView(
               builder: (context) {
-                return CupertinoPageScaffold(
-                  child: Home(),
-                );
+                return Home();
               },
             );
           case 1:
@@ -69,122 +73,17 @@ class _ScaffoldMainState extends State<ScaffoldMain> {
           case 2:
             return CupertinoTabView(
               builder: (context) {
-                return CupertinoPageScaffold(
-                  child: ShoppingBag(),
-                );
+                return ShoppingBag();
               },
             );
           default:
             return CupertinoTabView(
               builder: (context) {
-                return CupertinoPageScaffold(
-                  child: Home(),
-                );
+                return Home();
               },
             );
         }
       },
-    );
-  }
-}
-
-class Home extends StatelessWidget {
-  const Home({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return CupertinoPageScaffold(
-      navigationBar: CupertinoNavigationBar(
-        middle: Text("Home"),
-        transitionBetweenRoutes: true,
-        automaticallyImplyLeading: true,
-        previousPageTitle: "Back",
-      ),
-      child: Center(
-        child: CupertinoButton(
-          color: Colors.blueAccent,
-          child: Text("View StackOne"),
-          onPressed: () {
-            Navigator.push(
-              context,
-              CupertinoPageRoute(builder: (context) => StackOne()),
-            );
-          },
-        ),
-      ),
-    );
-  }
-}
-
-class StackOne extends StatelessWidget {
-  const StackOne({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return CupertinoPageScaffold(
-      navigationBar: CupertinoNavigationBar(
-        middle: Text("Stack One"),
-        transitionBetweenRoutes: true,
-        automaticallyImplyLeading: true,
-        previousPageTitle: "Back",
-      ),
-      child: Center(
-        child: CupertinoButton(
-          color: Colors.blueAccent,
-          child: Text("View StackTwo"),
-          onPressed: () {
-            Navigator.push(
-              context,
-              CupertinoPageRoute(builder: (context) => StackTwo()),
-            );
-          },
-        ),
-      ),
-    );
-  }
-}
-
-class StackTwo extends StatelessWidget {
-  const StackTwo({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return CupertinoPageScaffold(
-      navigationBar: CupertinoNavigationBar(
-        automaticallyImplyLeading: true,
-        middle: Text("Stack Two"),
-        transitionBetweenRoutes: true,
-        previousPageTitle: "Back",
-      ),
-      child: Center(
-        child: Text("End"),
-      ),
-    );
-  }
-}
-
-class Search extends StatelessWidget {
-  const Search({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return SafeArea(
-      child: Center(
-        child: Text("Search"),
-      ),
-    );
-  }
-}
-
-class ShoppingBag extends StatelessWidget {
-  const ShoppingBag({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return SafeArea(
-      child: Center(
-        child: Text("Shopping Bag"),
-      ),
     );
   }
 }
