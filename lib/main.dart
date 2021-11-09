@@ -90,38 +90,73 @@ class Home extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-        child: Center(
-      child: Column(
-        children: [
-          Text("Home"),
-          CupertinoButton(
-              child: Text("View more"),
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => More()),
-                );
-              })
-        ],
+    return CupertinoPageScaffold(
+      navigationBar: CupertinoNavigationBar(
+        middle: Text("Home"),
+        transitionBetweenRoutes: true,
+        automaticallyImplyLeading: true,
+        previousPageTitle: "Back",
       ),
-    ));
+      child: Center(
+        child: CupertinoButton(
+          color: Colors.blueGrey,
+          child: Text("View StackOne"),
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => StackOne()),
+            );
+          },
+        ),
+      ),
+    );
   }
 }
 
-class More extends StatelessWidget {
-  const More({Key? key}) : super(key: key);
+class StackOne extends StatelessWidget {
+  const StackOne({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return CupertinoPageScaffold(
-        navigationBar: CupertinoNavigationBar(
-          automaticallyImplyLeading: true,
-          previousPageTitle: "Back",
+      navigationBar: CupertinoNavigationBar(
+        middle: Text("Stack One"),
+        transitionBetweenRoutes: true,
+        automaticallyImplyLeading: true,
+        previousPageTitle: "Back",
+      ),
+      child: Center(
+        child: CupertinoButton(
+          color: Colors.blueGrey,
+          child: Text("View StackTwo"),
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => StackTwo()),
+            );
+          },
         ),
-        child: Center(
-          child: Text("More"),
-        ));
+      ),
+    );
+  }
+}
+
+class StackTwo extends StatelessWidget {
+  const StackTwo({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return CupertinoPageScaffold(
+      navigationBar: CupertinoNavigationBar(
+        automaticallyImplyLeading: true,
+        middle: Text("Stack Two"),
+        transitionBetweenRoutes: true,
+        previousPageTitle: "Back",
+      ),
+      child: Center(
+        child: Text("End"),
+      ),
+    );
   }
 }
 
