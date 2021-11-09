@@ -63,7 +63,7 @@ class _ScaffoldMainState extends State<ScaffoldMain> {
                 );
               },
             );
-          case 1:
+          case 2:
             return CupertinoTabView(
               builder: (context) {
                 return CupertinoPageScaffold(
