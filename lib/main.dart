@@ -17,6 +17,9 @@ class _AppState extends State<App> {
     return CupertinoApp(
       debugShowCheckedModeBanner: false,
       title: "Flutter Stack Navigator",
+      theme: CupertinoThemeData(
+        primaryColor: Colors.blueAccent,
+      ),
       home: ScaffoldMain(),
     );
   }
@@ -99,12 +102,12 @@ class Home extends StatelessWidget {
       ),
       child: Center(
         child: CupertinoButton(
-          color: Colors.blueGrey,
+          color: Colors.blueAccent,
           child: Text("View StackOne"),
           onPressed: () {
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => StackOne()),
+              CupertinoPageRoute(builder: (context) => StackOne()),
             );
           },
         ),
@@ -127,12 +130,12 @@ class StackOne extends StatelessWidget {
       ),
       child: Center(
         child: CupertinoButton(
-          color: Colors.blueGrey,
+          color: Colors.blueAccent,
           child: Text("View StackTwo"),
           onPressed: () {
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => StackTwo()),
+              CupertinoPageRoute(builder: (context) => StackTwo()),
             );
           },
         ),
